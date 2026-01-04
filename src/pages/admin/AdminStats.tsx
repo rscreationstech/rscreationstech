@@ -29,6 +29,7 @@ const AdminStats = () => {
     apps_count: 0,
     projects_count: 0,
     downloads_count: 0,
+    users_count: 0,
   });
 
   // Update form when data loads
@@ -38,6 +39,7 @@ const AdminStats = () => {
         apps_count: stats.apps_count,
         projects_count: stats.projects_count,
         downloads_count: stats.downloads_count,
+        users_count: stats.users_count ?? 0,
       });
     }
   });
@@ -127,6 +129,17 @@ const AdminStats = () => {
             type="number"
             value={formData.downloads_count}
             onChange={(e) => setFormData({ ...formData, downloads_count: parseInt(e.target.value) || 0 })}
+            min={0}
+          />
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="users_count">Active Users</Label>
+          <Input
+            id="users_count"
+            type="number"
+            value={formData.users_count}
+            onChange={(e) => setFormData({ ...formData, users_count: parseInt(e.target.value) || 0 })}
             min={0}
           />
         </div>

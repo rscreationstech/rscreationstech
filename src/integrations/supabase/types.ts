@@ -210,6 +210,7 @@ export type Database = {
           apps_count: number
           created_at: string
           downloads_count: number
+          users_count: number
           id: string
           projects_count: number
           updated_at: string
@@ -218,6 +219,7 @@ export type Database = {
           apps_count?: number
           created_at?: string
           downloads_count?: number
+          users_count?: number
           id?: string
           projects_count?: number
           updated_at?: string
@@ -226,6 +228,7 @@ export type Database = {
           apps_count?: number
           created_at?: string
           downloads_count?: number
+          users_count?: number
           id?: string
           projects_count?: number
           updated_at?: string

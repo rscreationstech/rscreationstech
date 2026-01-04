@@ -38,6 +38,12 @@ export function StatsSection() {
       icon: "projects" as const,
       suffix: "+"
     },
+    {
+      label: "Active Users",
+      value: stats?.users_count ?? 0,
+      icon: "users" as const,
+      suffix: "+"
+    },
   ];
 
   return (

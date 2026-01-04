@@ -40,7 +40,7 @@ const AdminLogin = () => {
         title: "Welcome back!",
         description: "You have successfully logged in.",
       });
-      navigate("/admin");
+      navigate("/rscraft");
     } catch (error: any) {
       toast({
         title: "Login failed",

@@ -4,6 +4,7 @@ CREATE TABLE public.site_stats (
   apps_count INTEGER NOT NULL DEFAULT 0,
   projects_count INTEGER NOT NULL DEFAULT 0,
   downloads_count INTEGER NOT NULL DEFAULT 0,
+  users_count INTEGER NOT NULL DEFAULT 0,
   created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
   updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now()
 );
@@ -116,4 +117,4 @@ CREATE TRIGGER update_projects_updated_at BEFORE UPDATE ON public.projects FOR E
 CREATE TRIGGER update_blog_posts_updated_at BEFORE UPDATE ON public.blog_posts FOR EACH ROW EXECUTE FUNCTION public.update_updated_at_column();
 
 -- Insert initial site stats
-INSERT INTO public.site_stats (apps_count, projects_count, downloads_count) VALUES (0, 0, 0);
+INSERT INTO public.site_stats (apps_count, projects_count, downloads_count, users_count) VALUES (0, 0, 0, 0);
