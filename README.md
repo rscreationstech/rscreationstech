@@ -52,8 +52,8 @@ This platform acts as my **central hub** — similar to a personal Play Store + 
 - `/projects` – Projects showcase
 - `/blog` – Updates & posts
 - `/contact` – Contact form
-- `/admin/login` – Admin login
-- `/admin` – Admin dashboard
+- `/rscraft/login` – Admin login
+- `/rscraft` – Admin dashboard
 - `/privacy-policy`, `/terms`, `/disclaimer`
 
 ---

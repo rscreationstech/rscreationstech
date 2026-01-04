@@ -69,7 +69,7 @@ const AdminApps = () => {
           <p className="text-muted-foreground">Manage your applications</p>
         </div>
         <Button asChild className="glow-primary">
-          <Link to="/admin/apps/new">
+          <Link to="/rscraft/apps/new">
             <Plus className="w-4 h-4 mr-2" />
             Add New App
           </Link>
@@ -139,7 +139,7 @@ const AdminApps = () => {
                     v{app.version || "1.0.0"}
                   </span>
                   <Button variant="outline" size="sm" asChild>
-                    <Link to={`/admin/apps/${app.id}`}>
+                    <Link to={`/rscraft/apps/${app.id}`}>
                       <Pencil className="w-4 h-4" />
                     </Link>
                   </Button>
@@ -169,7 +169,7 @@ const AdminApps = () => {
           </p>
           {!searchQuery && (
             <Button asChild>
-              <Link to="/admin/apps/new">
+              <Link to="/rscraft/apps/new">
                 <Plus className="w-4 h-4 mr-2" />
                 Add New App
               </Link>

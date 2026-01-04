@@ -79,7 +79,7 @@ const AdminProjectForm = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin-projects"] });
       toast({ title: isEditing ? "Project updated successfully" : "Project created successfully" });
-      navigate("/admin/projects");
+      navigate("/rscraft/projects");
     },
     onError: (error: any) => {
       toast({ title: "Failed to save project", description: error.message, variant: "destructive" });
@@ -248,7 +248,7 @@ const AdminProjectForm = () => {
 
         <div className="flex justify-end gap-4">
           <Button type="button" variant="outline" asChild>
-            <Link to="/admin/projects">Cancel</Link>
+            <Link to="/rscraft/projects">Cancel</Link>
           </Button>
           <Button type="submit" className="glow-primary" disabled={saveMutation.isPending}>
             <Save className="w-4 h-4 mr-2" />

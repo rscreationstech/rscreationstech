@@ -75,7 +75,7 @@ const AdminBlog = () => {
           <p className="text-muted-foreground">Manage your blog posts</p>
         </div>
         <Button asChild className="glow-primary">
-          <Link to="/admin/blog/new">
+          <Link to="/rscraft/blog/new">
             <Plus className="w-4 h-4 mr-2" />
             Write New Post
           </Link>
@@ -139,7 +139,7 @@ const AdminBlog = () => {
                 </div>
                 <div className="flex items-center gap-2 flex-shrink-0">
                   <Button variant="outline" size="sm" asChild>
-                    <Link to={`/admin/blog/${post.id}`}>
+                    <Link to={`/rscraft/blog/${post.id}`}>
                       <Pencil className="w-4 h-4" />
                     </Link>
                   </Button>
@@ -169,7 +169,7 @@ const AdminBlog = () => {
           </p>
           {!searchQuery && (
             <Button asChild>
-              <Link to="/admin/blog/new">
+              <Link to="/rscraft/blog/new">
                 <Plus className="w-4 h-4 mr-2" />
                 Write New Post
               </Link>

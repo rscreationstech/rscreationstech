@@ -155,7 +155,7 @@ const AdminAppForm = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin-apps"] });
       toast({ title: isEditing ? "App updated successfully" : "App created successfully" });
-      navigate("/admin/apps");
+      navigate("/rscraft/apps");
     },
     onError: (error: any) => {
       toast({ 
@@ -270,7 +270,7 @@ const AdminAppForm = () => {
         className="flex items-center gap-4"
       >
         <Button variant="ghost" size="icon" asChild>
-          <Link to="/admin/apps">
+          <Link to="/rscraft/apps">
             <ArrowLeft className="w-5 h-5" />
           </Link>
         </Button>
@@ -486,7 +486,7 @@ const AdminAppForm = () => {
         {/* Submit */}
         <div className="flex justify-end gap-4">
           <Button type="button" variant="outline" asChild>
-            <Link to="/admin/apps">Cancel</Link>
+            <Link to="/rscraft/apps">Cancel</Link>
           </Button>
           <Button type="submit" className="glow-primary" disabled={saveMutation.isPending}>
             <Save className="w-4 h-4 mr-2" />

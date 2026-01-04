@@ -20,7 +20,7 @@ const socialLinks = [
   { href: "#", icon: Github, label: "GitHub" },
   { href: "#", icon: Twitter, label: "Twitter" },
   { href: "#", icon: Linkedin, label: "LinkedIn" },
-  { href: "mailto:rscreations@gmail.com", icon: Mail, label: "Email" },
+  { href: "mailto:rscreations.tech@gmail.com", icon: Mail, label: "Email" },
 ];
 
 export function Footer() {

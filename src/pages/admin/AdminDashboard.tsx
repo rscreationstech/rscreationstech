@@ -27,17 +27,17 @@ const AdminDashboard = () => {
   });
 
   const statCards = [
-    { label: "Total Apps", value: stats?.apps ?? 0, icon: Package, href: "/admin/apps", color: "text-blue-500" },
-    { label: "Total Projects", value: stats?.projects ?? 0, icon: FolderGit2, href: "/admin/projects", color: "text-green-500" },
-    { label: "Blog Posts", value: stats?.posts ?? 0, icon: FileText, href: "/admin/blog", color: "text-purple-500" },
-    { label: "Unread Messages", value: stats?.unreadMessages ?? 0, icon: MessageSquare, href: "/admin/messages", color: "text-red-500" },
+    { label: "Total Apps", value: stats?.apps ?? 0, icon: Package, href: "/rscraft/apps", color: "text-blue-500" },
+    { label: "Total Projects", value: stats?.projects ?? 0, icon: FolderGit2, href: "/rscraft/projects", color: "text-green-500" },
+    { label: "Blog Posts", value: stats?.posts ?? 0, icon: FileText, href: "/rscraft/blog", color: "text-purple-500" },
+    { label: "Unread Messages", value: stats?.unreadMessages ?? 0, icon: MessageSquare, href: "/rscraft/messages", color: "text-red-500" },
   ];
 
   const quickActions = [
-    { label: "Add New App", href: "/admin/apps/new", icon: Package },
-    { label: "Add New Project", href: "/admin/projects/new", icon: FolderGit2 },
-    { label: "Write Blog Post", href: "/admin/blog/new", icon: FileText },
-    { label: "Update Stats", href: "/admin/stats", icon: TrendingUp },
+    { label: "Add New App", href: "/rscraft/apps/new", icon: Package },
+    { label: "Add New Project", href: "/rscraft/projects/new", icon: FolderGit2 },
+    { label: "Write Blog Post", href: "/rscraft/blog/new", icon: FileText },
+    { label: "Update Stats", href: "/rscraft/stats", icon: TrendingUp },
   ];
 
   return (

@@ -54,8 +54,8 @@ const App = () => (
           <Route path="/disclaimer" element={<Disclaimer />} />
 
           {/* Admin Routes */}
-          <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/admin" element={<AdminLayout />}>
+          <Route path="/rscraft/login" element={<AdminLogin />} />
+          <Route path="/rscraft" element={<AdminLayout />}>
             <Route index element={<AdminDashboard />} />
             <Route path="apps" element={<AdminApps />} />
             <Route path="apps/:id" element={<AdminAppForm />} />

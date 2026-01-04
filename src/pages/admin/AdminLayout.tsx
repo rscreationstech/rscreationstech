@@ -19,12 +19,12 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
 const navItems = [
-  { href: "/admin", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/admin/apps", label: "Apps", icon: Package },
-  { href: "/admin/projects", label: "Projects", icon: FolderGit2 },
-  { href: "/admin/blog", label: "Blog Posts", icon: FileText },
-  { href: "/admin/stats", label: "Stats", icon: BarChart3 },
-  { href: "/admin/messages", label: "Messages", icon: MessageSquare },
+  { href: "/rscraft", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/rscraft/apps", label: "Apps", icon: Package },
+  { href: "/rscraft/projects", label: "Projects", icon: FolderGit2 },
+  { href: "/rscraft/blog", label: "Blog Posts", icon: FileText },
+  { href: "/rscraft/stats", label: "Stats", icon: BarChart3 },
+  { href: "/rscraft/messages", label: "Messages", icon: MessageSquare },
 ];
 
 const AdminLayout = () => {
@@ -38,7 +38,7 @@ const AdminLayout = () => {
     const checkAuth = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) {
-        navigate("/admin/login");
+        navigate("/rscraft/login");
         return;
       }
       setIsLoading(false);
@@ -48,7 +48,7 @@ const AdminLayout = () => {
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       if (!session) {
-        navigate("/admin/login");
+        navigate("/rscraft/login");
       }
     });
 
@@ -61,7 +61,7 @@ const AdminLayout = () => {
       title: "Logged out",
       description: "You have been signed out successfully.",
     });
-    navigate("/admin/login");
+    navigate("/rscraft/login");
   };
 
   if (isLoading) {
@@ -86,7 +86,7 @@ const AdminLayout = () => {
         <div className="flex flex-col h-full">
           {/* Logo */}
           <div className="p-6 border-b border-border">
-            <Link to="/admin" className="flex items-center gap-3">
+            <Link to="/rscraft" className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center">
                 <Code2 className="w-5 h-5 text-primary" />
               </div>

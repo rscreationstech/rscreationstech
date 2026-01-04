@@ -86,7 +86,7 @@ const AdminBlogForm = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["admin-blog-posts"] });
       toast({ title: isEditing ? "Post updated successfully" : "Post created successfully" });
-      navigate("/admin/blog");
+      navigate("/rscraft/blog");
     },
     onError: (error: any) => {
       toast({ title: "Failed to save post", description: error.message, variant: "destructive" });
@@ -113,7 +113,7 @@ const AdminBlogForm = () => {
         className="flex items-center gap-4"
       >
         <Button variant="ghost" size="icon" asChild>
-          <Link to="/admin/blog">
+          <Link to="/rscraft/blog">
             <ArrowLeft className="w-5 h-5" />
           </Link>
         </Button>
@@ -202,7 +202,7 @@ const AdminBlogForm = () => {
 
         <div className="flex justify-end gap-4">
           <Button type="button" variant="outline" asChild>
-            <Link to="/admin/blog">Cancel</Link>
+            <Link to="/rscraft/blog">Cancel</Link>
           </Button>
           <Button type="submit" className="glow-primary" disabled={saveMutation.isPending}>
             <Save className="w-4 h-4 mr-2" />

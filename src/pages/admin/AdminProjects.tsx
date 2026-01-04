@@ -132,7 +132,7 @@ const AdminProjects = () => {
                 </div>
                 <div className="flex items-center gap-2 flex-shrink-0">
                   <Button variant="outline" size="sm" asChild>
-                    <Link to={`/admin/projects/${project.id}`}>
+                    <Link to={`/rscraft/projects/${project.id}`}>
                       <Pencil className="w-4 h-4" />
                     </Link>
                   </Button>
@@ -162,7 +162,7 @@ const AdminProjects = () => {
           </p>
           {!searchQuery && (
             <Button asChild>
-              <Link to="/admin/projects/new">
+              <Link to="/rscraft/projects/new">
                 <Plus className="w-4 h-4 mr-2" />
                 Add New Project
               </Link>

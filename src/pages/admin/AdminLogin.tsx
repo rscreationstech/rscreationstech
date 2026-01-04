@@ -19,7 +19,7 @@ const AdminLogin = () => {
     // Check if already logged in
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session) {
-        navigate("/admin");
+        navigate("/rscraft");
       }
     });
   }, [navigate]);
