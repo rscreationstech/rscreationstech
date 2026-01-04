@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Save, Plus, X, Image } from "lucide-react";
+import { ArrowLeft, Save, Plus, X, Image, Upload, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -35,6 +35,8 @@ const AdminAppForm = () => {
   const [newFeature, setNewFeature] = useState("");
   const [images, setImages] = useState<{ id?: string; image_url: string; alt_text: string }[]>([]);
   const [newImageUrl, setNewImageUrl] = useState("");
+  const [logoUploading, setLogoUploading] = useState(false);
+  const [screenshotUploading, setScreenshotUploading] = useState(false);
 
   // Fetch app data if editing
   const { data: app, isLoading } = useQuery({
@@ -192,6 +194,60 @@ const AdminAppForm = () => {
     setImages((prev) => prev.filter((_, i) => i !== index));
   };
 
+  const uploadLogo = async (file: File) => {
+    try {
+      setLogoUploading(true);
+      const fileExt = file.name.split(".").pop();
+      const fileName = `${Date.now()}.${fileExt}`;
+      const filePath = `logos/${fileName}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from("app-assets")
+        .upload(filePath, file);
+
+      if (uploadError) throw uploadError;
+
+      const { data } = supabase.storage.from("app-assets").getPublicUrl(filePath);
+      setFormData((prev) => ({ ...prev, logo_url: data.publicUrl }));
+      toast({ title: "Logo uploaded successfully" });
+    } catch (error: any) {
+      toast({
+        title: "Failed to upload logo",
+        description: error.message,
+        variant: "destructive",
+      });
+    } finally {
+      setLogoUploading(false);
+    }
+  };
+
+  const uploadScreenshot = async (file: File) => {
+    try {
+      setScreenshotUploading(true);
+      const fileExt = file.name.split(".").pop();
+      const fileName = `${Date.now()}.${fileExt}`;
+      const filePath = `screenshots/${fileName}`;
+
+      const { error: uploadError } = await supabase.storage
+        .from("app-assets")
+        .upload(filePath, file);
+
+      if (uploadError) throw uploadError;
+
+      const { data } = supabase.storage.from("app-assets").getPublicUrl(filePath);
+      setImages((prev) => [...prev, { image_url: data.publicUrl, alt_text: "" }]);
+      toast({ title: "Screenshot uploaded successfully" });
+    } catch (error: any) {
+      toast({
+        title: "Failed to upload screenshot",
+        description: error.message,
+        variant: "destructive",
+      });
+    } finally {
+      setScreenshotUploading(false);
+    }
+  };
+
   if (isLoading) {
     return (
       <div className="animate-pulse space-y-6">
@@ -317,13 +373,23 @@ const AdminAppForm = () => {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="logo_url">Logo URL</Label>
-            <Input
-              id="logo_url"
-              value={formData.logo_url}
-              onChange={(e) => setFormData({ ...formData, logo_url: e.target.value })}
-              placeholder="https://..."
-            />
+            <Label>Logo</Label>
+            <div className="flex gap-2">
+              <Input
+                type="file"
+                accept="image/*"
+                onChange={(e) => e.target.files?.[0] && uploadLogo(e.target.files[0])}
+                disabled={logoUploading}
+                className="flex-1"
+              />
+              {logoUploading && <Loader2 className="w-5 h-5 animate-spin" />}
+            </div>
+            {formData.logo_url && (
+              <div className="mt-3 p-4 bg-secondary/30 rounded-lg border border-secondary">
+                <p className="text-sm text-muted-foreground mb-2">Logo Preview:</p>
+                <img src={formData.logo_url} alt="Logo preview" className="w-24 h-24 object-cover rounded" />
+              </div>
+            )}
           </div>
 
           <div className="flex items-center gap-3">
@@ -386,15 +452,13 @@ const AdminAppForm = () => {
           
           <div className="flex gap-2">
             <Input
-              value={newImageUrl}
-              onChange={(e) => setNewImageUrl(e.target.value)}
-              placeholder="Image URL..."
-              onKeyPress={(e) => e.key === "Enter" && (e.preventDefault(), addImage())}
+              type="file"
+              accept="image/*"
+              onChange={(e) => e.target.files?.[0] && uploadScreenshot(e.target.files[0])}
+              disabled={screenshotUploading}
+              className="flex-1"
             />
-            <Button type="button" onClick={addImage} variant="outline">
-              <Image className="w-4 h-4 mr-2" />
-              Add
-            </Button>
+            {screenshotUploading && <Loader2 className="w-5 h-5 animate-spin" />}
           </div>
 
           {images.length > 0 && (

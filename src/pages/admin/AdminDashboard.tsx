@@ -30,7 +30,6 @@ const AdminDashboard = () => {
     { label: "Total Apps", value: stats?.apps ?? 0, icon: Package, href: "/admin/apps", color: "text-blue-500" },
     { label: "Total Projects", value: stats?.projects ?? 0, icon: FolderGit2, href: "/admin/projects", color: "text-green-500" },
     { label: "Blog Posts", value: stats?.posts ?? 0, icon: FileText, href: "/admin/blog", color: "text-purple-500" },
-    { label: "Downloads", value: stats?.downloads ?? 0, icon: Download, href: "/admin/stats", color: "text-orange-500" },
     { label: "Unread Messages", value: stats?.unreadMessages ?? 0, icon: MessageSquare, href: "/admin/messages", color: "text-red-500" },
   ];
 

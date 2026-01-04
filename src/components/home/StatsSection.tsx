@@ -38,12 +38,6 @@ export function StatsSection() {
       icon: "projects" as const,
       suffix: "+"
     },
-    { 
-      label: "Total Downloads", 
-      value: stats?.downloads_count ?? 0, 
-      icon: "downloads" as const,
-      suffix: "+"
-    },
   ];
 
   return (

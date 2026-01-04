@@ -26,7 +26,7 @@ export function Navbar() {
             <div className="w-9 h-9 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center group-hover:glow-primary transition-all duration-300">
               <Code2 className="w-5 h-5 text-primary" />
             </div>
-            <span className="font-semibold text-lg">DevPortfolio</span>
+            <span className="font-semibold text-lg">RS Creations Tech</span>
           </Link>
 
           {/* Desktop Navigation */}

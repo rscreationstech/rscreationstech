@@ -20,7 +20,7 @@ const socialLinks = [
   { href: "#", icon: Github, label: "GitHub" },
   { href: "#", icon: Twitter, label: "Twitter" },
   { href: "#", icon: Linkedin, label: "LinkedIn" },
-  { href: "mailto:hello@example.com", icon: Mail, label: "Email" },
+  { href: "mailto:rscreations@gmail.com", icon: Mail, label: "Email" },
 ];
 
 export function Footer() {
@@ -36,7 +36,7 @@ export function Footer() {
               <div className="w-9 h-9 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center">
                 <Code2 className="w-5 h-5 text-primary" />
               </div>
-              <span className="font-semibold text-lg">DevPortfolio</span>
+              <span className="font-semibold text-lg">RS Creations Tech</span>
             </Link>
             <p className="text-muted-foreground text-sm max-w-md mb-6">
               Building innovative software solutions and sharing knowledge with the developer community.
@@ -93,7 +93,7 @@ export function Footer() {
         {/* Bottom */}
         <div className="mt-12 pt-8 border-t border-border/50 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {currentYear} DevPortfolio. All rights reserved.
+            © {currentYear} RS Creations Tech. All rights reserved.
           </p>
           <p className="text-sm text-muted-foreground">
             Built with passion and modern technology.

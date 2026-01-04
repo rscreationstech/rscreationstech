@@ -80,10 +80,10 @@ const Contact = () => {
               <div>
                 <div className="text-sm text-muted-foreground">Email</div>
                 <a
-                  href="mailto:hello@example.com"
+                  href="mailto:rscreations@gmail.com"
                   className="text-lg font-medium hover:text-primary transition-colors"
                 >
-                  hello@example.com
+                  rscreations@gmail.com
                 </a>
               </div>
             </motion.div>

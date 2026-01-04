@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, Download, ExternalLink, Check } from "lucide-react";
+import { ArrowLeft, Download, Check } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { useQuery } from "@tanstack/react-query";
@@ -8,6 +8,24 @@ import { supabase } from "@/integrations/supabase/client";
 
 const AppDetails = () => {
   const { slug } = useParams<{ slug: string }>();
+
+  const handleDownload = async (downloadUrl: string, appName: string) => {
+    try {
+      const response = await fetch(downloadUrl);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = appName || 'download';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Download failed:', error);
+      window.open(downloadUrl, '_blank');
+    }
+  };
 
   const { data: app, isLoading: appLoading } = useQuery({
     queryKey: ["app", slug],
@@ -126,12 +144,13 @@ const AppDetails = () => {
                 </p>
               </div>
               {app.download_url && (
-                <Button size="lg" className="glow-primary" asChild>
-                  <a href={app.download_url} target="_blank" rel="noopener noreferrer">
-                    <Download className="w-4 h-4 mr-2" />
-                    Download
-                    <ExternalLink className="w-4 h-4 ml-2" />
-                  </a>
+                <Button 
+                  size="lg" 
+                  className="glow-primary"
+                  onClick={() => handleDownload(app.download_url!, app.name)}
+                >
+                  <Download className="w-4 h-4 mr-2" />
+                  Download
                 </Button>
               )}
             </motion.div>
