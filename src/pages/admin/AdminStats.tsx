@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Save } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -28,21 +28,19 @@ const AdminStats = () => {
   const [formData, setFormData] = useState({
     apps_count: 0,
     projects_count: 0,
-    downloads_count: 0,
     users_count: 0,
   });
 
   // Update form when data loads
-  useState(() => {
+  useEffect(() => {
     if (stats) {
       setFormData({
-        apps_count: stats.apps_count,
-        projects_count: stats.projects_count,
-        downloads_count: stats.downloads_count,
-        users_count: stats.users_count ?? 0,
+        apps_count: stats.apps_count || 0,
+        projects_count: stats.projects_count || 0,
+        users_count: stats.users_count || 0,
       });
     }
-  });
+  }, [stats]);
 
   const updateMutation = useMutation({
     mutationFn: async () => {
@@ -118,17 +116,6 @@ const AdminStats = () => {
             type="number"
             value={formData.projects_count}
             onChange={(e) => setFormData({ ...formData, projects_count: parseInt(e.target.value) || 0 })}
-            min={0}
-          />
-        </div>
-
-        <div className="space-y-2">
-          <Label htmlFor="downloads_count">Downloads Count</Label>
-          <Input
-            id="downloads_count"
-            type="number"
-            value={formData.downloads_count}
-            onChange={(e) => setFormData({ ...formData, downloads_count: parseInt(e.target.value) || 0 })}
             min={0}
           />
         </div>
